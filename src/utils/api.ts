@@ -1,7 +1,7 @@
 import WebApp from "@twa-dev/sdk";
 
 const BASE_URL = "https://sandbox.sportcrm.club/hook/tgminiapp2";
-const iData = { initData: WebApp.initData };
+const initData = WebApp.initData;
 
 export async function fetchPartnerData() {
   try {
@@ -10,7 +10,7 @@ export async function fetchPartnerData() {
       headers: {
         "Content-Type": "text/plain",
       },
-      body: JSON.stringify(iData),
+      body: JSON.stringify(initData),
     });
 
     const data = await response.json();
