@@ -19,9 +19,6 @@
         try {
             const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp2/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify(formData.value),
             });
 
