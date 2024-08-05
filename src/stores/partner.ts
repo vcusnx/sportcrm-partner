@@ -2,16 +2,16 @@ import { defineStore } from "pinia";
 
 export const usePartnerStore = defineStore("partner", {
   state: () => ({
-    partner: null,
-    tgid: null,
-    active: null,
-    saldo: null,
-    cnt: null,
-    sum: null,
-    debt: null,
-    debtcnt: null,
-    wait: null,
-    waitcnt: null,
+    partner: 0,
+    tgid: 0,
+    active: false,
+    saldo: 0,
+    cnt: 0,
+    sum: 0,
+    debt: 0,
+    debtcnt: 0,
+    wait: 0,
+    waitcnt: 0,
     rows: [],
   }),
   actions: {

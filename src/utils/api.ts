@@ -13,7 +13,7 @@ export async function fetchPartnerData() {
 
     console.log(JSON.stringify(data));
 
-    return data;
+    return JSON.stringify(data);
   } catch (error) {
     console.error("Error fetching partner data:", error);
     throw error;
