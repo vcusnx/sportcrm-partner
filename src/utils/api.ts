@@ -6,7 +6,7 @@ export async function fetchPartnerData() {
   try {
     const response = await fetch(`${BASE_URL}/start`, {
       method: "POST",
-      body: WebApp.initData.toString(),
+      body: WebApp.initData,
     });
 
     const data = await response.json();
