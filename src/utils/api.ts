@@ -8,7 +8,7 @@ export async function fetchPartnerData() {
     const response = await fetch(`${BASE_URL}/start`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "text/plain",
       },
       body: JSON.stringify(iData),
     });
