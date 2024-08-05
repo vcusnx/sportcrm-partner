@@ -15,6 +15,7 @@ const routes = [
   { path: "/#referral", component: Partners },
   { path: "/#finance", component: Payments },
   { path: "/#dashboard", component: Dashboard },
+  { path: "/", component: Dashboard },
 ];
 
 const router = createRouter({
