@@ -3,12 +3,14 @@
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
 
+    const initDataTg = WebApp.initData;
+
     const formData = ref({
         name: '',
         email: '',
         phone: '',
         club: '',
-        initData: WebApp.initData
+        initData: initDataTg
     });
 
     const router = useRouter();
