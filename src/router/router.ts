@@ -9,11 +9,11 @@ import Dashboard from "../views/Dashboard.vue";
 
 const routes = [
   { path: "/registration", component: Registration },
-  { path: "/application", component: Application },
+  { path: "/add", component: Application },
   { path: "/events", component: Events },
   { path: "/info", component: Info },
-  { path: "/partners", component: Partners },
-  { path: "/payments", component: Payments },
+  { path: "/referral", component: Partners },
+  { path: "/finance", component: Payments },
   { path: "/dashboard", component: Dashboard },
 ];
 

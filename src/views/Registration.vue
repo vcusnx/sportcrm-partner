@@ -1,15 +1,47 @@
 <script setup lang="ts">
+    import WebApp from '@twa-dev/sdk';
+    import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
+    const formData = ref({
+        name: '',
+        email: '',
+        phone: '',
+        club: '',
+        initData: WebApp.initData
+    });
+
+    const router = useRouter();
+
+    const submitForm = async () => {
+        try {
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData.value),
+            });
+
+            const data = await response.json();
+
+            if (data.partner !== 0) {
+                router.push('/dashboard');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
 </script>
 
 <template>
     <h2>Регистрация в реферальной программе</h2>
     <div class="registrationForm">
-        <form method="post">
-            <input type="text" placeholder="Ф.И.О. *" required>
-            <input type="email" placeholder="Email *" required>
-            <input type="number" placeholder="Номер телефона *" required>
-            <input type="text" placeholder="Название клуба">
+        <form @submit.prevent="submitForm">
+            <input type="text" placeholder="Ф.И.О. *" v-model="formData.name" required>
+            <input type="email" placeholder="Email *" v-model="formData.email" required>
+            <input type="number" placeholder="Номер телефона *" v-model="formData.phone" required>
+            <input type="text" placeholder="Название клуба" v-model="formData.club">
             <div class="agreements">
                 <div class="tou">
                     <input type="checkbox" name="tou-agreement" id="tou-agreement">
@@ -22,6 +54,7 @@
                             программы</a></label>
                 </div>
             </div>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </template>
