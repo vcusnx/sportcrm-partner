@@ -11,14 +11,14 @@
 
 <template>
     <div class="info-panel">
-        <div class="applications">
+        <router-link to="/events" class="applications">
             <p>Всего заявок</p>
             <p class="val">{{ rows.length }}</p>
-        </div>
-        <div class="funds">
+        </router-link>
+        <router-link to="/payments" class="funds">
             <p>За всё время</p>
             <p class="val">{{ sum }}</p>
-        </div>
+        </router-link>
     </div>
 </template>
 
