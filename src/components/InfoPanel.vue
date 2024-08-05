@@ -1,9 +1,18 @@
 <script setup lang="ts">
     import { usePartnerStore } from '../stores/partner';
     import { fetchPartnerData } from '../utils/api';
+    import { onMounted } from 'vue';
 
     const partnerStore = usePartnerStore();
-    partnerStore.setPartnerData(fetchPartnerData)
+
+    onMounted(async () => {
+        try {
+            const data = await fetchPartnerData();
+            partnerStore.setPartnerData(JSON.parse(data));
+        } catch (error) {
+            console.error("Error fetching partner data:", error);
+        }
+    });
 </script>
 
 <template>
