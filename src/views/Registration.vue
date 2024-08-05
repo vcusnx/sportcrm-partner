@@ -10,14 +10,14 @@
         email: '',
         phone: '',
         club: '',
-        initData: initDataTg
+        initData: initDataTg,
     });
 
     const router = useRouter();
 
     const submitForm = async () => {
         try {
-            const response = await fetch('/register', {
+            const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp2/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
