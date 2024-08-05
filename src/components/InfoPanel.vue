@@ -8,7 +8,7 @@
     onMounted(async () => {
         try {
             const data = await fetchPartnerData();
-            partnerStore.setPartnerData(JSON.parse(data));
+            partnerStore.setPartnerData(data);
         } catch (error) {
             console.error("Error fetching partner data:", error);
         }

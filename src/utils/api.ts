@@ -14,9 +14,9 @@ export async function fetchPartnerData() {
 
     const data = await response.json();
 
-    console.log(JSON.stringify(data));
+    console.log(data);
 
-    return JSON.stringify(data);
+    return data;
   } catch (error) {
     console.error("Error fetching partner data:", error);
     throw error;
