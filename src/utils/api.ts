@@ -4,12 +4,12 @@ const BASE_URL = "https://sandbox.sportcrm.club/hook/tgminiapp2";
 
 export async function fetchPartnerData() {
   try {
+    const params = new URLSearchParams();
+    params.append("initData", WebApp.initData);
+
     const response = await fetch(`${BASE_URL}/start`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ initData: WebApp.initData }),
+      body: params,
     });
 
     const data = await response.json();
