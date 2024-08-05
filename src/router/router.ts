@@ -8,13 +8,13 @@ import Payments from "../views/Payments.vue";
 import Dashboard from "../views/Dashboard.vue";
 
 const routes = [
-  { path: "/registration", component: Registration },
-  { path: "/add", component: Application },
-  { path: "/events", component: Events },
-  { path: "/info", component: Info },
-  { path: "/referral", component: Partners },
-  { path: "/finance", component: Payments },
-  { path: "/dashboard", component: Dashboard },
+  { path: "/#registration", component: Registration },
+  { path: "/#add", component: Application },
+  { path: "/#events", component: Events },
+  { path: "/#info", component: Info },
+  { path: "/#referral", component: Partners },
+  { path: "/#finance", component: Payments },
+  { path: "/#dashboard", component: Dashboard },
 ];
 
 const router = createRouter({

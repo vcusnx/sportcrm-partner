@@ -11,11 +11,11 @@
 
 <template>
     <div class="info-panel">
-        <router-link to="/events" class="applications">
+        <router-link to="/#events" class="applications">
             <p>Всего заявок</p>
             <p class="val">{{ rows.length }}</p>
         </router-link>
-        <router-link to="/payments" class="funds">
+        <router-link to="/#payments" class="funds">
             <p>За всё время</p>
             <p class="val">{{ sum }}</p>
         </router-link>
