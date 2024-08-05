@@ -8,18 +8,23 @@
 
 <template>
     <div class="info-panel">
-        <router-link to="/#events" class="applications">
+        <a href="/#events" class="applications">
             <p>Всего заявок</p>
             <p class="val">{{ partnerStore.rows.length }}</p>
-        </router-link>
-        <router-link to="/#payments" class="funds">
+        </a>
+        <a href="/#payments" class="funds">
             <p>За всё время</p>
             <p class="val">{{ partnerStore.sum }}</p>
-        </router-link>
+        </a>
     </div>
 </template>
 
 <style scoped>
+    a {
+        text-decoration: none;
+        color: #f2f2f2;
+    }
+
     .info-panel {
         display: flex;
         justify-content: space-between;
