@@ -17,11 +17,11 @@
 
 <template>
     <div class="info-panel">
-        <a href="/#events" class="applications">
+        <a href="/events" class="applications">
             <p>Всего заявок</p>
             <p class="val">{{ partnerStore.rows.length }}</p>
         </a>
-        <a href="/#payments" class="funds">
+        <a href="/payments" class="funds">
             <p>За всё время</p>
             <p class="val">{{ partnerStore.sum }}</p>
         </a>

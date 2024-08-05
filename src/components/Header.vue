@@ -8,7 +8,9 @@
             <img src="../assets/logo.svg" alt="Логотип" width="128px">
         </div>
         <div class="info">
-            <img src="../assets/info.svg" alt="Информация" width="32px">
+            <a href="/info">
+                <img src="../assets/info.svg" alt="Информация" width="32px">
+            </a>
         </div>
     </div>
 </template>
