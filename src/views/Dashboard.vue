@@ -3,9 +3,6 @@
     import Chart from '../components/Chart.vue';
     import InfoPanel from '../components/InfoPanel.vue';
     import Actions from '../components/Actions.vue';
-    import { fetchPartnerData } from '../utils/api';
-
-    fetchPartnerData();
 </script>
 
 <template>
