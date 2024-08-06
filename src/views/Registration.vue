@@ -27,6 +27,7 @@
             if (data.partner !== 0) {
                 router.push('/dashboard');
             }
+
         } catch (error) {
             console.error('Error submitting form:', error);
         }
