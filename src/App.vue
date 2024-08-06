@@ -1,9 +1,8 @@
 <script setup lang="ts">
-  import Registration from './views/Registration.vue';
 </script>
 
 <template>
-  <Registration />
+  <router-view></router-view>
 </template>
 
 <style scoped></style>

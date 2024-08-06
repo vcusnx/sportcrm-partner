@@ -7,16 +7,17 @@ import Registration from "../views/Registration.vue";
 import Payments from "../views/Payments.vue";
 
 const routes = [
-  { path: "/", component: Dashboard },
+  { path: "/", component: Registration },
+  { path: "/dashboard", component: Dashboard },
   { path: "/info", component: Info },
-  { path: "/add", component: Application },
-  { path: "/referral", component: Partners },
-  { path: "/regstration", component: Registration },
-  { path: "/finance", component: Payments },
-  { path: "/events", component: Payments },
+  { path: "/application", component: Application },
+  { path: "/partners", component: Partners },
+  { path: "/payments", component: Payments },
 ];
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+export default router;

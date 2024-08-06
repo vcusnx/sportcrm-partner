@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import WebApp from '@twa-dev/sdk';
     import { ref } from 'vue';
+    import router from '../router/router';
 
     const name = ref('');
     const email = ref('');
@@ -24,7 +25,7 @@
             const data = await response.json();
 
             if (data.partner !== 0) {
-                location.href = '/dashboard';
+                router.push('/dashboard');
             }
         } catch (error) {
             console.error('Error submitting form:', error);
