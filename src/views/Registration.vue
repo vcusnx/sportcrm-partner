@@ -1,40 +1,40 @@
 <script setup lang="ts">
-    // import WebApp from '@twa-dev/sdk';
-    // import { ref } from 'vue';
+    import WebApp from '@twa-dev/sdk';
+    import { ref } from 'vue';
 
-    // const name = ref('');
-    // const email = ref('');
-    // const phone = ref('');
-    // const club = ref('');
+    const name = ref('');
+    const email = ref('');
+    const phone = ref('');
+    const club = ref('');
 
-    // const formData = new URLSearchParams();
-    // formData.append('name', name);
-    // formData.append('email', email);
-    // formData.append('phone', phone);
-    // formData.append('club', club);
-    // formData.append('initData', WebApp.initData);
+    const submitForm = async () => {
+        try {
+            const formData = new URLSearchParams();
+            formData.append('name', name.value);
+            formData.append('email', email.value);
+            formData.append('phone', phone.value);
+            formData.append('club', club.value);
+            formData.append('initData', WebApp.initData);
 
-    // const submitForm = async () => {
-    //     try {
-    //         const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp2/register', {
-    //             method: 'POST',
-    //             body: formData,
-    //         });
+            const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp3/register', {
+                method: 'POST',
+                body: formData,
+            });
 
-    //         const data = await response.json();
+            const data = await response.json();
 
-    //         if (data.partner !== 0) {
-    //             location.href = '/dashboard';
-    //         }
-    //     } catch (error) {
-    //         console.error('Error submitting form:', error);
-    //     }
-    // };
+            if (data.partner !== 0) {
+                location.href = '/dashboard';
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
 </script>
 
 <template>
     <h2>Регистрация в реферальной программе</h2>
-    <!-- <div class="registrationForm">
+    <div class="registrationForm">
         <form @submit.prevent="submitForm">
             <input type="text" placeholder="Ф.И.О. *" v-model="name" required>
             <input type="email" placeholder="Email *" v-model="email" required>
@@ -54,7 +54,7 @@
             </div>
             <button type="submit">Submit</button>
         </form>
-    </div> -->
+    </div>
 </template>
 
 <style scoped>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import Dashboard from './views/Dashboard.vue';
+  import Registration from './views/Registration.vue';
 </script>
 
 <template>
-  <Dashboard />
+  <Registration />
 </template>
 
 <style scoped></style>
