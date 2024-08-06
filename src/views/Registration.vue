@@ -1,49 +1,45 @@
 <script setup lang="ts">
-    import WebApp from '@twa-dev/sdk';
-    import { ref } from 'vue';
-    import { useRouter } from 'vue-router';
+    // import WebApp from '@twa-dev/sdk';
+    // import { ref } from 'vue';
 
-    const initDataTg = WebApp.initData;
+    // const name = ref('');
+    // const email = ref('');
+    // const phone = ref('');
+    // const club = ref('');
 
-    const formData = ref({
-        name: '',
-        email: '',
-        phone: '',
-        club: '',
-        initData: initDataTg,
-    });
+    // const formData = new URLSearchParams();
+    // formData.append('name', name);
+    // formData.append('email', email);
+    // formData.append('phone', phone);
+    // formData.append('club', club);
+    // formData.append('initData', WebApp.initData);
 
-    const router = useRouter();
+    // const submitForm = async () => {
+    //     try {
+    //         const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp2/register', {
+    //             method: 'POST',
+    //             body: formData,
+    //         });
 
-    const submitForm = async () => {
-        try {
-            const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp2/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'text/plain'
-                },
-                body: JSON.stringify(formData.value),
-            });
+    //         const data = await response.json();
 
-            const data = await response.json();
-
-            if (data.partner !== 0) {
-                router.push('/dashboard');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-        }
-    };
+    //         if (data.partner !== 0) {
+    //             location.href = '/dashboard';
+    //         }
+    //     } catch (error) {
+    //         console.error('Error submitting form:', error);
+    //     }
+    // };
 </script>
 
 <template>
     <h2>Регистрация в реферальной программе</h2>
-    <div class="registrationForm">
+    <!-- <div class="registrationForm">
         <form @submit.prevent="submitForm">
-            <input type="text" placeholder="Ф.И.О. *" v-model="formData.name" required>
-            <input type="email" placeholder="Email *" v-model="formData.email" required>
-            <input type="number" placeholder="Номер телефона *" v-model="formData.phone" required>
-            <input type="text" placeholder="Название клуба" v-model="formData.club">
+            <input type="text" placeholder="Ф.И.О. *" v-model="name" required>
+            <input type="email" placeholder="Email *" v-model="email" required>
+            <input type="number" placeholder="Номер телефона *" v-model="phone" required>
+            <input type="text" placeholder="Название клуба" v-model="club">
             <div class="agreements">
                 <div class="tou">
                     <input type="checkbox" name="tou-agreement" id="tou-agreement">
@@ -58,7 +54,7 @@
             </div>
             <button type="submit">Submit</button>
         </form>
-    </div>
+    </div> -->
 </template>
 
 <style scoped>

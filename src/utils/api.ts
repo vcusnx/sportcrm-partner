@@ -18,7 +18,7 @@ export async function fetchPartnerData() {
 
     return data;
   } catch (error) {
-    console.error("Error fetching partner data:", error);
+    console.error("Ошибка при получении данных партнера:", error);
     throw error;
   }
 }
