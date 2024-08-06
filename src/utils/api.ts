@@ -1,6 +1,6 @@
 import WebApp from "@twa-dev/sdk";
 
-const BASE_URL = "https://sandbox.sportcrm.club/hook/tgminiapp2";
+const BASE_URL = "https://sandbox.sportcrm.club/hook/tgminiapp3";
 
 export async function fetchPartnerData() {
   try {
