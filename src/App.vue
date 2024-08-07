@@ -6,7 +6,7 @@
 
     onMounted(() => {
         if (!router.currentRoute.value.matched.length) {
-            router.push('/sportcrm-partner');
+            router.push('/#');
         }
     });
 </script>
