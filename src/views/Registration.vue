@@ -14,7 +14,7 @@
 
             console.log(JSON.stringify(data));
 
-            if (partnerStore.partner === 0) {
+            if (partnerStore.partner !== 0) {
                 router.push('/dashboard');
             }
         } catch (error) {

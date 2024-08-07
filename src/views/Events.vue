@@ -4,6 +4,9 @@
     import router from '../router/router';
 
     onMounted(() => {
+        WebApp.BackButton.show();
+        WebApp.BackButton.onClick(() => { router.back });
+
         WebApp.MainButton.text = 'Создать заявку';
         WebApp.MainButton.color = '#68B77E';
         WebApp.MainButton.show();

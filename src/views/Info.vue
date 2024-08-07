@@ -1,8 +1,11 @@
 <script setup lang="ts">
     import { onMounted } from 'vue';
     import WebApp from '@twa-dev/sdk';
+    import router from '../router/router';
 
     onMounted(() => {
+        WebApp.BackButton.show();
+        WebApp.BackButton.onClick(() => { router.back });
         WebApp.MainButton.hide();
     });
 
