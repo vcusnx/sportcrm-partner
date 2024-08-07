@@ -9,6 +9,7 @@ import Events from "../views/Events.vue";
 
 const routes = [
   { path: "/registration", component: Registration },
+  { path: "", component: Registration },
   { path: "/", component: Dashboard },
   { path: "/info", component: Info },
   { path: "/events", component: Events },
