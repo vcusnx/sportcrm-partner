@@ -43,10 +43,7 @@
 
             const data = await response.json();
 
-            if (data.partner !== 0) {
-                router.push('/dashboard');
-            }
-
+            return data;
         } catch (error) {
             console.error('Error submitting form:', error);
         }
