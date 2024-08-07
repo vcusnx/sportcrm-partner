@@ -42,7 +42,7 @@
 
     onMounted(() => {
         WebApp.BackButton.show();
-        WebApp.BackButton.onClick(() => { router.back });
+        WebApp.BackButton.onClick(() => { router.back() });
 
         WebApp.MainButton.text = 'Добавить';
         WebApp.MainButton.color = '#68B77E';

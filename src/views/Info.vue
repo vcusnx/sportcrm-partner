@@ -5,7 +5,7 @@
 
     onMounted(() => {
         WebApp.BackButton.show();
-        WebApp.BackButton.onClick(() => { router.back });
+        WebApp.BackButton.onClick(() => { router.back() });
         WebApp.MainButton.hide();
     });
 
