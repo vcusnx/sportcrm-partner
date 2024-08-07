@@ -1,32 +1,45 @@
 <script setup lang="ts">
+    import { usePartnerStore } from '../stores/partner';
+    import { fetchPartnerData } from '../utils/api';
+    import { onMounted } from 'vue';
 
+    const partnerStore = usePartnerStore();
+
+    onMounted(async () => {
+        try {
+            const data = await fetchPartnerData();
+            partnerStore.setPartnerData(data);
+        } catch (error) {
+            console.error("Error fetching partner data:", error);
+        }
+    });
 </script>
 
 <template>
     <div class="actions">
         <RouterLink to="/referrals">
             <div class="withdraw">
-                <p class="title">К выводу: <span>{{ 11000 }}</span></p>
+                <p class="title">К выводу: <span>{{ partnerStore.saldo }}</span></p>
                 <div class="goto">
-                    <p>{{ 9 }}</p>
+                    <p>{{ partnerStore.cnt }}</p>
                     <img src="../assets/arrow_blue.svg" alt="Перейти к выводу" width="32px">
                 </div>
             </div>
         </RouterLink>
         <RouterLink to="/referrals">
             <div class="debtors">
-                <p class="title">Должники: <span>{{ 7000 }}</span></p>
+                <p class="title">Должники: <span>{{ partnerStore.debt }}</span></p>
                 <div class="goto">
-                    <p>{{ 5 }}</p>
+                    <p>{{ partnerStore.cnt }}</p>
                     <img src="../assets/arrow_red.svg" alt="Перейти к выводу" width="32px">
                 </div>
             </div>
         </RouterLink>
         <RouterLink to="/referrals">
             <div class="pending">
-                <p class="title">Ожидание: <span>{{ 5000 }}</span></p>
+                <p class="title">Ожидание: <span>{{ partnerStore.wait }}</span></p>
                 <div class="goto">
-                    <p>{{ 2 }}</p>
+                    <p>{{ partnerStore.waitcnt }}</p>
                     <img src="../assets/arrow_gray.svg" alt="Перейти к выводу" width="32px">
                 </div>
             </div>

@@ -1,7 +1,37 @@
 <script setup lang="ts">
-    import { onMounted } from 'vue';
+    import { onMounted, ref } from 'vue';
     import WebApp from '@twa-dev/sdk';
     import router from '../router/router';
+
+    interface Referral {
+        type: string;
+        id: string;
+        name: string;
+        club: string;
+        sum: string;
+        tel: string;
+        email: string;
+        percent: string;
+    }
+
+    const serverResponse = ref<Referral[]>([]);
+
+    const fetchData = async () => {
+        try {
+            const params = new URLSearchParams();
+            params.append("initData", WebApp.initData);
+
+            const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp3/referral',
+                {
+                    method: "POST",
+                    body: params,
+                });
+            const data = await response.json();
+            serverResponse.value = data;
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     onMounted(() => {
         WebApp.BackButton.show();
@@ -13,19 +43,22 @@
         WebApp.MainButton.onClick(() => {
             router.push('add');
         });
+
+        fetchData();
     });
 </script>
 
 <template>
-    <h2>Партнеры</h2>
+    <h2>Все пользователи</h2>
     <div class="partners">
-        <div class="partner">
+        <div class="partner" v-for="item in serverResponse" :key="item.id">
             <div class="partner-info">
-                <p><span>{{ 'Название' }}</span></p>
-                <p><span>{{ 'Имя' }}</span></p>
-                <p><span>{{ 'Телефон' }}</span></p>
+                <p><span>{{ item.club }}</span></p>
+                <p><span>{{ item.name }}</span></p>
+                <p><span>{{ item.tel }} / {{ item.email }}</span></p>
             </div>
-            <p><span>{{ 5000 }}</span></p>
+            <p><span>{{ item.sum }}</span></p>
+            <p><span>% {{ item.percent }}</span></p>
         </div>
     </div>
 </template>
@@ -48,10 +81,11 @@
         border-radius: 8px;
         margin-bottom: 16px;
         text-align: start;
+    }
 
-        .partner {
-            display: flex;
-            justify-content: space-between;
-        }
+    .partner {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
     }
 </style>

@@ -1,18 +1,50 @@
 <script setup lang="ts">
-    import { onMounted } from 'vue';
+    import { onMounted, ref } from 'vue';
     import WebApp from '@twa-dev/sdk';
     import router from '../router/router';
+
+    interface Payment {
+        type: string;
+        id: number;
+        name: string;
+        sum: number;
+        datetime: string;
+    }
+
+    const serverResponse = ref<Payment[]>([]);
+
+    const fetchData = async () => {
+        try {
+            const params = new URLSearchParams();
+            params.append("initData", WebApp.initData);
+
+            const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp3/finance',
+                {
+                    method: "POST",
+                    body: params,
+                });
+            const data = await response.json();
+            serverResponse.value = data;
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     onMounted(() => {
         WebApp.BackButton.show();
         WebApp.BackButton.onClick(() => { router.back() });
 
-        WebApp.MainButton.text = 'Создать заявку';
+        WebApp.MainButton.text = 'Вывести';
         WebApp.MainButton.color = '#68B77E';
         WebApp.MainButton.show();
         WebApp.MainButton.onClick(() => {
-            router.push('add');
+            WebApp.showPopup({
+                title: 'Успешно',
+                message: 'Ваши средства скоро будут выведены'
+            });
         });
+
+        fetchData();
     });
 </script>
 
@@ -20,18 +52,17 @@
     <h2>Недавние события</h2>
 
     <div class="events">
-        <div class="event">
+        <div class="event" v-for="item in serverResponse" :key="item.id">
             <div class="event-info">
-                <p><span>{{ 'Тип заявки' }}</span></p>
-                <p><span>№ {{ 'Заявки' }}</span></p>
+                <p><span>{{ item.type || "Тип" }}</span></p>
+                <p><span>№ {{ item.id || 0 }}</span></p>
             </div>
             <div class="datetime">
-                <p><span>{{ 'Дата' }}</span></p>
-                <p><span>{{ 'Время' }}</span></p>
+                <p>Дата: <span>{{ new Date(item.datetime).toLocaleDateString() }}</span></p>
+                <p>Время: <span>{{ new Date(item.datetime).toLocaleTimeString() }}</span></p>
             </div>
         </div>
     </div>
-
 </template>
 
 <style scoped>

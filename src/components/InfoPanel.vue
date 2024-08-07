@@ -19,11 +19,11 @@
     <div class="info-panel">
         <RouterLink to="/events" class="applications">
             <p>Всего заявок</p>
-            <p class="val">{{ partnerStore.rows ? partnerStore.rows.length : 0 }}</p>
+            <p class="val">{{ partnerStore.rows.length }}</p>
         </RouterLink>
         <RouterLink to="/finance" class="funds">
             <p>За всё время</p>
-            <p class="val">{{ partnerStore.sum || 0 }}</p>
+            <p class="val">{{ partnerStore.sum }}</p>
         </RouterLink>
     </div>
 </template>

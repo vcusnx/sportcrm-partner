@@ -1,7 +1,33 @@
 <script setup lang="ts">
-    import { onMounted } from 'vue';
+    import { onMounted, ref } from 'vue';
     import WebApp from '@twa-dev/sdk';
     import router from '../router/router';
+
+    interface Payment {
+        type: string;
+        id: number;
+        name: string;
+        sum: number;
+        datetime: string;
+    }
+
+    const serverResponse = ref<Payment[]>([]);
+
+    const fetchData = async () => {
+        try {
+            const params = new URLSearchParams();
+            params.append("initData", WebApp.initData);
+
+            const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp3/finance', {
+                method: "POST",
+                body: params,
+            });
+            const data = await response.json();
+            serverResponse.value = data;
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     onMounted(() => {
         WebApp.BackButton.show();
@@ -14,20 +40,24 @@
             WebApp.showPopup({
                 title: 'Успешно',
                 message: 'Ваши средства скоро будут выведены'
-            })
+            });
         });
+
+        fetchData();
     });
 </script>
 
 <template>
     <h2>История платежей</h2>
     <div class="payments">
-        <div class="payment">
+        <div class="payment" v-for="item in serverResponse" :key="item.id">
             <div class="datetime">
-                <p>Дата: <span>{{ '01.01.2024' }}</span></p>
-                <p>Время: <span>{{ '12:00' }}</span></p>
+                <p>Дата: <span>{{ new Date(item.datetime).toLocaleDateString() }}</span></p>
+                <p>Время: <span>{{ new Date(item.datetime).toLocaleTimeString() }}</span></p>
             </div>
-            <p>Сумма: <span>{{ 5000 }}</span></p>
+            <p>Сумма: <span>{{ item.sum }}</span></p>
+            <p>Тип: <span>{{ item.type }}</span></p>
+            <p>Имя: <span>{{ item.name }}</span></p>
         </div>
     </div>
 </template>

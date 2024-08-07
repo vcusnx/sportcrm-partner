@@ -26,13 +26,11 @@
 
             const data = await response.json();
 
-            if (data.partner !== 0) {
+            if (data !== null) {
                 WebApp.showPopup({
                     title: 'Успешно',
                     message: 'Ваша заявка отправлена'
                 })
-
-                router.push('/dashboard');
             }
 
         } catch (error) {
@@ -59,8 +57,8 @@
             <input type="text" placeholder="Название клуба *" v-model="name" required>
             <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="email" required>
             <input type="number" placeholder="Номер телефона *" v-model="tel" required>
-            <input type="email" placeholder="Email" v-model="name">
-            <input type="text" placeholder="Информация о клубе" v-model="name">
+            <input type="email" placeholder="Email" v-model="email">
+            <input type="text" placeholder="Информация о клубе" v-model="info">
         </form>
     </div>
 </template>
