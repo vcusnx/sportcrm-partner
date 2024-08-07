@@ -1,14 +1,26 @@
 <script setup lang="ts">
     import WebApp from '@twa-dev/sdk';
     import { onMounted, ref } from 'vue';
-    import router from '../router/router';
     import { usePartnerStore } from '../stores/partner';
+    import { fetchPartnerData } from '../utils/api';
+    import router from '../router/router';
 
     const partnerStore = usePartnerStore();
 
-    if (partnerStore.partner === 1) {
-        router.push('/dashboard')
-    }
+    onMounted(async () => {
+        try {
+            const data = await fetchPartnerData();
+            partnerStore.setPartnerData(data);
+
+            console.log(JSON.stringify(data));
+
+            if (partnerStore.partner === 1) {
+                router.push('/dashboard');
+            }
+        } catch (error) {
+            console.error("Error fetching partner data:", error);
+        }
+    });
 
     const name = ref('')
     const email = ref('');
