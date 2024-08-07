@@ -8,11 +8,13 @@
     import router from '../router/router';
 
     onMounted(() => {
+        WebApp.BackButton.hide();
+
         WebApp.MainButton.text = 'Создать заявку';
         WebApp.MainButton.color = '#68B77E';
         WebApp.MainButton.show();
         WebApp.MainButton.onClick(() => {
-            router.push('add');
+            router.push('/add');
         });
     });
 </script>
