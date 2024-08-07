@@ -2,8 +2,15 @@
     import WebApp from '@twa-dev/sdk';
     import { onMounted, ref } from 'vue';
     import router from '../router/router';
+    import { usePartnerStore } from '../stores/partner';
 
-    const name = ref('');
+    const partnerStore = usePartnerStore();
+
+    if (partnerStore.partner === 1) {
+        router.push('/dashboard')
+    }
+
+    const name = ref('')
     const email = ref('');
     const tel = ref('');
     const club = ref('');
@@ -13,7 +20,7 @@
             const formData = new URLSearchParams();
             formData.append('name', name.value);
             formData.append('email', email.value);
-            formData.append('phone', tel.value);
+            formData.append('tel', tel.value);
             formData.append('club', club.value);
             formData.append('initData', WebApp.initData);
 
@@ -40,6 +47,7 @@
 
         WebApp.onEvent('mainButtonClicked', submitForm);
     });
+    }
 </script>
 
 <template>
