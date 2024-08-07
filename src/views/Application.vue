@@ -9,7 +9,7 @@
     const club = ref('');
     const info = ref('');
 
-    const submitForm = async () => {
+    const reg = async () => {
         try {
             const formData = new URLSearchParams();
             formData.append('name', name.value);
@@ -46,16 +46,16 @@
         WebApp.MainButton.color = '#68B77E';
         WebApp.MainButton.show();
 
-        WebApp.onEvent('mainButtonClicked', submitForm);
+        WebApp.onEvent('mainButtonClicked', reg);
     });
 </script>
 
 <template>
     <h2>Новая заявка</h2>
-    <div class="registrationForm" @submit.prevent="submitForm">
+    <div class="registratePartner" @submit.prevent="reg">
         <form method="post">
             <input type="text" placeholder="Название клуба *" v-model="name" required>
-            <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="email" required>
+            <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="name" required>
             <input type="number" placeholder="Номер телефона *" v-model="tel" required>
             <input type="email" placeholder="Email" v-model="email">
             <input type="text" placeholder="Информация о клубе" v-model="info">
@@ -86,5 +86,6 @@
         border-radius: 8px;
         padding: 8px;
         font-size: large;
+        color: #f2f2f2;
     }
 </style>
