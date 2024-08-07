@@ -47,7 +47,7 @@
 
         WebApp.onEvent('mainButtonClicked', submitForm);
     });
-    }
+
 </script>
 
 <template>
