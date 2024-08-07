@@ -1,16 +1,60 @@
 <script setup lang="ts">
+    import WebApp from '@twa-dev/sdk';
+    import { onMounted, ref } from 'vue';
 
+    const name = ref('');
+    const email = ref('');
+    const tel = ref('');
+    const club = ref('');
+    const info = ref('');
+
+    const submitForm = async () => {
+        try {
+            const formData = new URLSearchParams();
+            formData.append('name', name.value);
+            formData.append('email', email.value);
+            formData.append('tel', tel.value);
+            formData.append('club', club.value);
+            formData.append('info', info.value);
+            formData.append('initData', WebApp.initData);
+
+            const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp3/add', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (data.partner !== 0) {
+                WebApp.showPopup({
+                    title: 'Успешно',
+                    message: 'Ваша заявка отправлена'
+                })
+            }
+
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
+
+    onMounted(() => {
+        WebApp.MainButton.text = 'Зарегистрироваться';
+        WebApp.MainButton.color = '#68B77E';
+        WebApp.MainButton.show();
+
+        WebApp.onEvent('mainButtonClicked', submitForm);
+    });
 </script>
 
 <template>
     <h2>Новая заявка</h2>
     <div class="registrationForm">
         <form method="post">
-            <input type="text" placeholder="Название клуба *" required>
-            <input type="text" placeholder="Ф.И.О. Руководителя *" required>
-            <input type="number" placeholder="Номер телефона *" required>
-            <input type="email" placeholder="Email">
-            <input type="text" placeholder="Информация о клубе">
+            <input type="text" placeholder="Название клуба *" v-model="name" required>
+            <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="email" required>
+            <input type="number" placeholder="Номер телефона *" v-model="tel" required>
+            <input type="email" placeholder="Email" v-model="name">
+            <input type="text" placeholder="Информация о клубе" v-model="name">
         </form>
     </div>
 </template>

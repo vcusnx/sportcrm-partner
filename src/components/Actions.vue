@@ -4,31 +4,41 @@
 
 <template>
     <div class="actions">
-        <div class="withdraw">
-            <p class="title">К выводу: <span>{{ 11000 }}</span></p>
-            <div class="goto">
-                <p>{{ 9 }}</p>
-                <img src="../assets/arrow_blue.svg" alt="Перейти к выводу" width="32px">
+        <RouterLink to="/referrals">
+            <div class="withdraw">
+                <p class="title">К выводу: <span>{{ 11000 }}</span></p>
+                <div class="goto">
+                    <p>{{ 9 }}</p>
+                    <img src="../assets/arrow_blue.svg" alt="Перейти к выводу" width="32px">
+                </div>
             </div>
-        </div>
-        <div class="debtors">
-            <p class="title">Должники: <span>{{ 7000 }}</span></p>
-            <div class="goto">
-                <p>{{ 5 }}</p>
-                <img src="../assets/arrow_red.svg" alt="Перейти к выводу" width="32px">
+        </RouterLink>
+        <RouterLink to="/referrals">
+            <div class="debtors">
+                <p class="title">Должники: <span>{{ 7000 }}</span></p>
+                <div class="goto">
+                    <p>{{ 5 }}</p>
+                    <img src="../assets/arrow_red.svg" alt="Перейти к выводу" width="32px">
+                </div>
             </div>
-        </div>
-        <div class="pending">
-            <p class="title">Ожидание: <span>{{ 5000 }}</span></p>
-            <div class="goto">
-                <p>{{ 2 }}</p>
-                <img src="../assets/arrow_gray.svg" alt="Перейти к выводу" width="32px">
+        </RouterLink>
+        <RouterLink to="/referrals">
+            <div class="pending">
+                <p class="title">Ожидание: <span>{{ 5000 }}</span></p>
+                <div class="goto">
+                    <p>{{ 2 }}</p>
+                    <img src="../assets/arrow_gray.svg" alt="Перейти к выводу" width="32px">
+                </div>
             </div>
-        </div>
+        </RouterLink>
     </div>
 </template>
 
 <style scoped>
+
+    a {
+        color: white;
+    }
 
     .title {
         font-weight: 300;

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
@@ -8,9 +7,9 @@
             <img src="../assets/logo.svg" alt="Логотип" width="128px">
         </div>
         <div class="info">
-            <a href="/info">
+            <RouterLink to="/info">
                 <img src="../assets/info.svg" alt="Информация" width="32px">
-            </a>
+            </RouterLink>
         </div>
     </div>
 </template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
     import WebApp from '@twa-dev/sdk';
-    import { ref } from 'vue';
+    import { onMounted, ref } from 'vue';
     import router from '../router/router';
 
     const name = ref('');
     const email = ref('');
-    const phone = ref('');
+    const tel = ref('');
     const club = ref('');
 
     const submitForm = async () => {
@@ -13,7 +13,7 @@
             const formData = new URLSearchParams();
             formData.append('name', name.value);
             formData.append('email', email.value);
-            formData.append('phone', phone.value);
+            formData.append('phone', tel.value);
             formData.append('club', club.value);
             formData.append('initData', WebApp.initData);
 
@@ -32,6 +32,14 @@
             console.error('Error submitting form:', error);
         }
     };
+
+    onMounted(() => {
+        WebApp.MainButton.text = 'Зарегистрироваться';
+        WebApp.MainButton.color = '#68B77E';
+        WebApp.MainButton.show();
+
+        WebApp.onEvent('mainButtonClicked', submitForm);
+    });
 </script>
 
 <template>
@@ -40,7 +48,7 @@
         <form @submit.prevent="submitForm">
             <input type="text" placeholder="Ф.И.О. *" v-model="name" required>
             <input type="email" placeholder="Email *" v-model="email" required>
-            <input type="number" placeholder="Номер телефона *" v-model="phone" required>
+            <input type="tel" placeholder="Номер телефона *" v-model="tel" required>
             <input type="text" placeholder="Название клуба" v-model="club">
             <div class="agreements">
                 <div class="tou">
@@ -54,7 +62,6 @@
                             программы</a></label>
                 </div>
             </div>
-            <button type="submit">Submit</button>
         </form>
     </div>
 </template>

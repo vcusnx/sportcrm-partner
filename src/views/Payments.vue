@@ -1,5 +1,18 @@
 <script setup lang="ts">
+    import { onMounted } from 'vue';
+    import WebApp from '@twa-dev/sdk';
 
+    onMounted(() => {
+        WebApp.MainButton.text = 'Вывести';
+        WebApp.MainButton.color = '#68B77E';
+        WebApp.MainButton.show();
+        WebApp.MainButton.onClick(() => {
+            WebApp.showPopup({
+                title: 'Успешно',
+                message: 'Ваши средства скоро будут выведены'
+            })
+        });
+    });
 </script>
 
 <template>

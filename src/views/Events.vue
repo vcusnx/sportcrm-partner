@@ -1,5 +1,16 @@
 <script setup lang="ts">
+    import { onMounted } from 'vue';
+    import WebApp from '@twa-dev/sdk';
+    import router from '../router/router';
 
+    onMounted(() => {
+        WebApp.MainButton.text = 'Создать заявку';
+        WebApp.MainButton.color = '#68B77E';
+        WebApp.MainButton.show();
+        WebApp.MainButton.onClick(() => {
+            router.push('add');
+        });
+    });
 </script>
 
 <template>

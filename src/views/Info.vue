@@ -1,4 +1,10 @@
 <script setup lang="ts">
+    import { onMounted } from 'vue';
+    import WebApp from '@twa-dev/sdk';
+
+    onMounted(() => {
+        WebApp.MainButton.hide();
+    });
 
 </script>
 
@@ -34,7 +40,7 @@
         }
 
         div {
-            border: 1px solid #68B77E;
+            border: 2px solid #68B77E;
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 16px;

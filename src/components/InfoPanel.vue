@@ -17,14 +17,14 @@
 
 <template>
     <div class="info-panel">
-        <a href="/events" class="applications">
+        <RouterLink to="/events" class="applications">
             <p>Всего заявок</p>
             <p class="val">{{ partnerStore.rows ? partnerStore.rows.length : 0 }}</p>
-        </a>
-        <a href="/payments" class="funds">
+        </RouterLink>
+        <RouterLink to="/finance" class="funds">
             <p>За всё время</p>
             <p class="val">{{ partnerStore.sum || 0 }}</p>
-        </a>
+        </RouterLink>
     </div>
 </template>
 
