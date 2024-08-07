@@ -56,7 +56,7 @@
     <h2>Новая заявка</h2>
     <div class="registratePartner" @submit.prevent="reg">
         <form method="post">
-            <input type="text" placeholder="Название клуба *" v-model="name" required>
+            <input type="text" placeholder="Название клуба *" v-model="club" required>
             <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="name" required>
             <input type="number" placeholder="Номер телефона *" v-model="tel" required>
             <input type="email" placeholder="Email" v-model="email">
