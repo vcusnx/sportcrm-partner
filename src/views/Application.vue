@@ -38,7 +38,7 @@
     };
 
     onMounted(() => {
-        WebApp.MainButton.text = 'Зарегистрироваться';
+        WebApp.MainButton.text = 'Добавить';
         WebApp.MainButton.color = '#68B77E';
         WebApp.MainButton.show();
 
@@ -48,7 +48,7 @@
 
 <template>
     <h2>Новая заявка</h2>
-    <div class="registrationForm">
+    <div class="registrationForm" @submit.prevent="submitForm">
         <form method="post">
             <input type="text" placeholder="Название клуба *" v-model="name" required>
             <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="email" required>
