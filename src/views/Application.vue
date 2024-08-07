@@ -26,12 +26,7 @@
 
             const data = await response.json();
 
-            if (data !== null) {
-                WebApp.showPopup({
-                    title: 'Успешно',
-                    message: 'Ваша заявка отправлена'
-                })
-            }
+            console.log(JSON.stringify(data));
 
             return data;
 
