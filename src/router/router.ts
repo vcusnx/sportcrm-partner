@@ -8,9 +8,8 @@ import Payments from "../views/Payments.vue";
 import Events from "../views/Events.vue";
 
 const routes = [
-  { path: "/registration", component: Registration },
-  { path: "", component: Registration },
-  { path: "/", component: Dashboard },
+  { path: "/", component: Registration },
+  { path: "/dashboard", component: Dashboard },
   { path: "/info", component: Info },
   { path: "/events", component: Events },
   { path: "/add", component: Application },
@@ -19,7 +18,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory("/"),
+  history: createWebHistory(),
   routes,
 });
 
