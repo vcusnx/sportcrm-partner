@@ -3,33 +3,31 @@
     import { onMounted, ref } from 'vue';
     import router from '../router/router';
 
-    const name = ref('');
-    const email = ref('');
-    const tel = ref('');
-    const club = ref('');
-    const info = ref('');
+    const formData = ref({
+        name: '',
+        email: '',
+        tel: '',
+        club: '',
+        info: ''
+    });
 
     const reg = async () => {
         try {
-            const formData = new URLSearchParams();
-            formData.append('name', name.value);
-            formData.append('email', email.value);
-            formData.append('tel', tel.value);
-            formData.append('club', club.value);
-            formData.append('info', info.value);
-            formData.append('initData', WebApp.initData);
+            const form = new URLSearchParams();
+            form.append('name', formData.value.name);
+            form.append('email', formData.value.email);
+            form.append('tel', formData.value.tel);
+            form.append('club', formData.value.club);
+            form.append('info', formData.value.info);
+            form.append('initData', WebApp.initData);
 
             const response = await fetch('https://sandbox.sportcrm.club/hook/tgminiapp3/add', {
                 method: 'POST',
-                body: formData,
+                body: form,
             });
 
             const data = await response.json();
-
-            console.log(JSON.stringify(data));
-
             return data;
-
         } catch (error) {
             console.error('Error submitting form:', error);
         }
@@ -49,13 +47,13 @@
 
 <template>
     <h2>Новая заявка</h2>
-    <div class="registratePartner" @submit.prevent="reg">
-        <form method="post">
-            <input type="text" placeholder="Название клуба *" v-model="club" required>
-            <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="name" required>
-            <input type="number" placeholder="Номер телефона *" v-model="tel" required>
-            <input type="email" placeholder="Email" v-model="email">
-            <input type="text" placeholder="Информация о клубе" v-model="info">
+    <div class="registratePartner">
+        <form @submit.prevent="reg">
+            <input type="text" placeholder="Название клуба *" v-model="formData.club" required>
+            <input type="text" placeholder="Ф.И.О. Руководителя *" v-model="formData.name" required>
+            <input type="number" placeholder="Номер телефона *" v-model="formData.tel" required>
+            <input type="email" placeholder="Email" v-model="formData.email">
+            <input type="text" placeholder="Информация о клубе" v-model="formData.info">
         </form>
     </div>
 </template>

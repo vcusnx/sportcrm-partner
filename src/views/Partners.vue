@@ -14,7 +14,7 @@
         percent: string;
     }
 
-    const serverResponse = ref<Referral[]>([]);
+    const referrals = ref<Referral[]>([]);
 
     const fetchData = async () => {
         try {
@@ -26,8 +26,11 @@
                     method: "POST",
                     body: params,
                 });
+
             const data = await response.json();
-            serverResponse.value = data;
+
+            referrals.value = data.rows;
+
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -51,7 +54,7 @@
 <template>
     <h2>Все пользователи</h2>
     <div class="partners">
-        <div class="partner" v-for="item in serverResponse" :key="item.id">
+        <div class="partner" v-for="item in referrals" :key="item.id">
             <div class="partner-info">
                 <p><span>{{ item.club }}</span></p>
                 <p><span>{{ item.name }}</span></p>

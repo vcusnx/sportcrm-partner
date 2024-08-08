@@ -54,8 +54,8 @@
     <div class="events">
         <div class="event" v-for="item in serverResponse" :key="item.id">
             <div class="event-info">
-                <p><span>{{ item.type || "Тип" }}</span></p>
-                <p><span>№ {{ item.id || 0 }}</span></p>
+                <p><span>{{ item.type }}</span></p>
+                <p><span>№ {{ item.id }}</span></p>
             </div>
             <div class="datetime">
                 <p>Дата: <span>{{ new Date(item.datetime).toLocaleDateString() }}</span></p>
