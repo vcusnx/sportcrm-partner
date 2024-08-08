@@ -7,6 +7,10 @@
 
     const partnerStore = usePartnerStore();
 
+    const withdraw = partnerStore.sum;
+    const debt = partnerStore.debt;
+    const wait = partnerStore.wait;
+
     export default {
         name: "Средства",
         components: { Doughnut },
@@ -16,7 +20,7 @@
                     labels: ["К выводу", "Должники", "Ожидание"],
                     datasets: [{
                         backgroundColor: ["#0070F0", "#ED5959", "#C6C6C6"],
-                        data: [partnerStore.sum, partnerStore.debt, partnerStore.wait],
+                        data: [withdraw, debt, wait],
                         borderWidth: 0
                     }]
                 },
