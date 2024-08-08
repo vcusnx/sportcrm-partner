@@ -66,8 +66,10 @@
                 <p><span>{{ item.name }}</span></p>
                 <p><span>{{ item.tel }} / {{ item.email }}</span></p>
             </div>
-            <p><span>{{ item.sum }}</span></p>
-            <p><span>% {{ item.percent }}</span></p>
+            <div class="funds">
+                <p><span>{{ item.sum }}</span></p>
+                <p><span>% {{ item.percent }}</span></p>
+            </div>
         </div>
     </div>
 </template>
@@ -85,16 +87,25 @@
 
     .partners {
         min-width: 320px;
-        border: 2px solid #68B77E;
         padding: 16px;
         border-radius: 8px;
         margin-bottom: 16px;
-        text-align: start;
     }
 
     .partner {
         display: flex;
         justify-content: space-between;
         margin-bottom: 16px;
+        border: 2px solid #68B77E;
+
+        .partner-info {
+            display: grid;
+            text-align: start;
+        }
+
+        .funds {
+            display: grid;
+            text-align: end;
+        }
     }
 </style>
