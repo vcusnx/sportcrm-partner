@@ -28,8 +28,14 @@
                 });
 
             const data = await response.json();
+            console.log("Data received:", data);
 
-            referrals.value = data.rows;
+            if (data.rows) {
+                referrals.value = data.rows;
+                console.log("Referrals updated:", referrals.value);
+            } else {
+                console.error("Data does not contain 'rows' property");
+            }
 
         } catch (error) {
             console.error("Error fetching data:", error);
