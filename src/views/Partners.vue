@@ -88,24 +88,26 @@
     .partners {
         min-width: 320px;
         padding: 16px;
-        border-radius: 8px;
         margin-bottom: 16px;
     }
 
     .partner {
         display: flex;
         justify-content: space-between;
+        border-radius: 8px;
         margin-bottom: 16px;
         border: 2px solid #68B77E;
 
         .partner-info {
-            display: grid;
+            display: flow;
             text-align: start;
+            padding-left: 16px;
         }
 
         .funds {
-            display: grid;
+            display: flow;
             text-align: end;
+            padding-right: 16px;
         }
     }
 </style>
