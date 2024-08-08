@@ -16,7 +16,6 @@
 
 <style scoped>
     .header {
-        min-width: 360px;
         display: flex;
         justify-content: space-between;
         align-items: center;

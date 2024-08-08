@@ -1,8 +1,11 @@
 <script lang="ts">
     import { Doughnut } from 'vue-chartjs';
     import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js';
+    import { usePartnerStore } from '../stores/partner';
 
     ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale);
+
+    const partnerStore = usePartnerStore();
 
     export default {
         name: "Средства",
@@ -13,13 +16,13 @@
                     labels: ["К выводу", "Должники", "Ожидание"],
                     datasets: [{
                         backgroundColor: ["#0070F0", "#ED5959", "#C6C6C6"],
-                        data: [10000, 2000, 5000],
+                        data: [partnerStore.sum, partnerStore.debt, partnerStore.wait],
                         borderWidth: 0
                     }]
                 },
                 chartOptions: {
                     responsive: true,
-                    cutout: '60%',
+                    cutout: '70%',
                     plugins: {
                         legend: {
                             display: false
@@ -46,8 +49,7 @@
         margin-bottom: 8px;
         display: flex;
         justify-content: center;
-        max-height: 256px;
-        width: 100%;
+        max-height: 300px;
         align-items: center;
     }
 </style>
