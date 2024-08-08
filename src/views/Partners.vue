@@ -87,7 +87,6 @@
 
     .partners {
         min-width: 320px;
-        padding: 16px;
         margin-bottom: 16px;
     }
 
